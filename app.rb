@@ -22,6 +22,7 @@ class App < Sinatra::Base
   end
 
   get '/incomes/add' do
+    haml :income_form, :format => :html5
   end
 
   post '/incomes/add' do
