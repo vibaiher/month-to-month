@@ -1,10 +1,21 @@
 $: << File.join(File.dirname(__FILE__), 'lib')
+ENV['RACK_ENV'] ||= 'development'
 
 require 'sinatra/base'
+require 'sinatra/flash'
+require 'sinatra/config_file'
+require 'sinatra/partial'
+
+require 'haml'
 
 class App < Sinatra::Base
 
+  register Sinatra::Flash
+  register Sinatra::ConfigFile
+  register Sinatra::Partial
+
   get '/' do
+    haml :index, :format => :html5
   end
 
   get '/incomes' do
